@@ -1,5 +1,5 @@
 const { merge } = require("webpack-merge"); // Import merge function
-const common = require("./webpack.common.js"); // Import common config
+const common = require("./webpack.common.cjs"); // Import common config
 
 const devConfig = merge(common, {
   mode: "development", // Set mode to development
