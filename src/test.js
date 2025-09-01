@@ -7,12 +7,30 @@ describe("reverseString", () => {
   test("should reverse a single word correctly", () => {
     expect(reverseString("hello")).toBe("olleh");
   });
+  test("Should return null for an empty string", () => {
+    expect(reverseString("")).toBe(null);
+  });
+  test("Should return a single letter when input is a single letter", () => {
+    expect(reverseString("a")).toBe("a");
+  });
+  test("Should handle spaces between words", () => {
+    expect(reverseString("hello world")).toBe("dlrow olleh");
+  });
+  test("Should handle leading and trailing spaces", () => {
+    expect(reverseString(" hello ")).toBe(" olleh ");
+  });
+  test("Should handle special characters correctly", () => {
+    expect(reverseString("123!@#")).toBe("#@!321");
+  });
 });
 
 // Test for capitalizing 1st letter of a string
 describe("capitalize", () => {
   test("should capitalize first letter", () => {
-    expect(capitalize("Captain")).toBe("Captain");
+    expect(capitalize("captain")).toBe("Captain");
+  });
+  test("Should handle single letters", () => {
+    expect(capitalize("a")).toBe("A");
   });
 });
 
@@ -51,7 +69,7 @@ describe("shift letters in desired order", () => {
 
 //Test for an object returning average, min, max and length of a given array
 describe("Take an array of numbers and return an object containing average, min, max and te length of the array", () => {
-  test("Should return average of the array", () => {
+  test("Should correctly calculate the average of [1, 2, 3]", () => {
     const myArray = [1, 2, 3];
     const analysis = analyzeArray(myArray);
     expect(analysis.average).toBe(2);
@@ -70,5 +88,21 @@ describe("Take an array of numbers and return an object containing average, min,
     const myArray = [1, 2, 3];
     const analysis = analyzeArray(myArray);
     expect(analysis.length).toBe(3);
+  });
+  test("Should handle empty arrays", () => {
+    const myArray = [];
+    const analysis = analyzeArray(myArray);
+    expect(analysis.average).toBe(null);
+    expect(analysis.maximum).toBe(null);
+    expect(analysis.minimum).toBe(null);
+    expect(analysis.length).toBe(0);
+  });
+  test("Should handle single numbers", () => {
+    const myArray = [2];
+    const analysis = analyzeArray(myArray);
+    expect(analysis.average).toBe(2);
+    expect(analysis.maximum).toBe(2);
+    expect(analysis.minimum).toBe(2);
+    expect(analysis.length).toBe(1);
   });
 });

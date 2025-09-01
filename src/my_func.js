@@ -1,4 +1,7 @@
 export function reverseString(str) {
+  if (str === "") {
+    return null;
+  }
   return str.split("").reverse().join("");
 }
 
@@ -47,11 +50,16 @@ export function ceaserCipher(str, key) {
 
 //Analyze array function that takes and array and return the average, min, max and length
 export function analyzeArray(arr) {
+  if (!arr.length) {
+    return {
+      average: null,
+      maximum: null,
+      minimum: null,
+      length: 0,
+    };
+  }
   const sum = arr.reduce((acc, curr) => acc + curr, 0);
-
-  //Average of the array
   const average = sum / arr.length;
-  console.log(average);
   //Min of the array
   const min = Math.min(...arr);
 
